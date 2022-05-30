@@ -7,27 +7,24 @@ public class EmpWage {
     static final int NUM_OF_WORKING_DAYS = 2;
     static final int MAX_HOUR_IN_MONTH = 10;
 
-    public static void main(String[] args) {
+    public static int computeEmpWage(){
         int empHrs = 0;
         int totalEmpHrs = 0;
-        int totalWorkingDays = 20;
+        int totalWorkingDays = 0;
 
         while (totalEmpHrs <= MAX_HOUR_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
             totalWorkingDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
             switch (empCheck) {
-
                 case 1:
                     System.out.println("Employee is full time present");
                     empHrs = 8;
                     break;
-
                 case 2:
                     System.out.println("Employee is part time present.");
                     empHrs = 4;
                     break;
-
                 default:
                     System.out.println("Employee is Absent");
                     empHrs = 0;
@@ -38,6 +35,10 @@ public class EmpWage {
         }
         int totalEmpWage = totalEmpHrs * EPM_RATE_PER_HOUR;
         System.out.println("total EmpWage: " + totalEmpHrs);
+        return totalEmpWage;
     }
 
+    public static void main(String[] args) {
+        computeEmpWage();
+    }
 }
