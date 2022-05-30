@@ -1,17 +1,20 @@
 package com.bridglabz;
 
 public class EmpWage {
+    static final int IS_FULL_TIME = 2;
+    static final int IS_PART_TIME = 1;
+    static final int EPM_RATE_PER_HOUR = 20;
+    static final int NUM_OF_WORKING_DAYS = 2;
+    static final int MAX_HOUR_IN_MONTH = 10;
 
     public static void main(String[] args) {
-        int is_Full_Time = 2;
-        int is_PART_Time = 1;
-        int EPM_RATE_PER_HOUR = 20;
         int empHrs = 0;
-        int empWage = 0;
-        int Day = 0;
-        int workingdays = 20;
-        int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-        for (Day = 1; Day <= workingdays; Day++){
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 20;
+
+        while (totalEmpHrs <= MAX_HOUR_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+            totalWorkingDays++;
+            int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
             switch (empCheck) {
 
@@ -30,8 +33,11 @@ public class EmpWage {
                     empHrs = 0;
                     break;
             }
+            totalEmpHrs += empHrs;
+            System.out.println("Days: " + totalWorkingDays + "empHr:" + totalEmpHrs);
         }
-        empWage = empHrs * EPM_RATE_PER_HOUR;
-        System.out.println("Emp Wage: "+empWage);
+        int totalEmpWage = totalEmpHrs * EPM_RATE_PER_HOUR;
+        System.out.println("total EmpWage: " + totalEmpHrs);
     }
+
 }
